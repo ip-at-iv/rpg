@@ -1,0 +1,17 @@
+{
+    "name": "demyanseleznev/rpg",
+    "autoload": {
+        "psr-4": {
+            "Demyanseleznev\\Rpg\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Demyan Seleznev",
+            "email": "seleznev@intervolga.ru"
+        }
+    ],
+    "require": {
+        "ext-readline": "*"
+    }
+}
