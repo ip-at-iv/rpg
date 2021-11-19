@@ -10,6 +10,8 @@ use Demyanseleznev\Rpg\Spell\Attack;
 use Demyanseleznev\Rpg\Spell\Bash;
 use Demyanseleznev\Rpg\Spell\Collection as SpellCollection;
 use Demyanseleznev\Rpg\Spell\Defense;
+use Demyanseleznev\Rpg\Spell\Heal;
+use Demyanseleznev\Rpg\Spell\HealLesserWounds;
 
 final class Warrior implements CharacterInterface
 {
@@ -42,7 +44,7 @@ final class Warrior implements CharacterInterface
         $this->currentHealth = $this->health();
         $this->currentMana = $this->mana();
 
-        $this->spells = new SpellCollection([new Attack(), new Defense(), new Bash()]);
+        $this->spells = new SpellCollection([new Attack(), new Defense(), new Bash(), new HealLesserWounds()]);
         $this->effects = new EffectCollection();
     }
 
