@@ -21,7 +21,7 @@ final class Bash implements SpellInterface
 
     public function manacost(): int
     {
-        return 10; // todo: formula
+        return 25; // todo: formula
     }
 
     public function name(): string

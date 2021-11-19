@@ -92,6 +92,7 @@ final class TurnArbiter
         $this->playerPool->rewind();
         $winner = $this->playerPool->current();
         $this->ui->say(sprintf('%s wins the match!', $winner->name()));
+        $this->ui->say(sprintf('Total turns taken: %s', $this->turns()));
     }
 
     public function turns(): int
