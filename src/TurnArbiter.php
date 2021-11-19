@@ -46,12 +46,13 @@ final class TurnArbiter
                     $interaction->act();
                 } while (!$interaction->consumesTurn());
 
-                if ($player->character()->health() == 0) {
+                if (!$player->character()->isAlive()) {
                     $this->ui->sayTo($player, 'You get __NOTHING__! You LOSE! GOOD DAY, SIR!');
                     unset($this->playerPool[$index]);
                 }
             }
             $this->turns += 1;
+
         } while (count($this->playerPool) > 1);
 
         $this->playerPool->rewind();

@@ -23,10 +23,10 @@ $interactionManager->setInteractions([
 $arbiter = new TurnArbiter($ui, $interactionManager);
 
 $player = new Player('Player-1');
-$character = new Warrior('War228', 250, 0, 100, 125);
+$character = new Warrior('War228', 5, 2, 6);
 $player->setCharacter($character);
 
-$cpu = new Computer(new Warrior('War322', 250, 0, 100, 50));
+$cpu = new Computer(new Warrior('War322', 8, 4, 2));
 
 $arbiter->add($player);
 $arbiter->add($cpu);

@@ -5,7 +5,6 @@ namespace Demyanseleznev\Rpg\Spell;
 
 use Demyanseleznev\Rpg\CharacterInterface;
 use Demyanseleznev\Rpg\SpellInterface;
-use Exception;
 
 /**
  * Represents basic attack.
@@ -18,8 +17,8 @@ final class Attack implements SpellInterface
 {
     public function affect(CharacterInterface $caster, CharacterInterface $target): void
     {
-        if ($caster === $target) {
-            throw InvalidTargetException::forTarget($target);
+        if (!$this->canCast($caster, $target)) {
+            return;
         }
 
         $target->takeDamage($caster->power());
@@ -32,7 +31,11 @@ final class Attack implements SpellInterface
 
     public function name(): string
     {
-        return 'Attack';
+        return 'attack';
     }
 
+    public function canCast(CharacterInterface $caster, CharacterInterface $target): bool
+    {
+        return $caster !== $target;
+    }
 }

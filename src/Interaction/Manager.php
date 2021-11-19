@@ -33,8 +33,10 @@ final class Manager
 
             /** @var SpellInterface $spell */
             $spell = Randomizer::fromCollection($spells);
-            /** @var PlayerInterface $target */
-            $target = Randomizer::fromCollection($player->targetList());
+            do {
+                /** @var PlayerInterface $target */
+                $target = Randomizer::fromCollection($player->targetList());
+            } while (!$spell->canCast($player->character(), $target->character()));
 
             $this->ui->sayTo($player, sprintf('Chooses to use %s on %s', $spell->name(), $target->name()));
             return new Apply($spell, $player->character(), $target->character());

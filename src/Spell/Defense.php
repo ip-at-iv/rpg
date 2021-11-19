@@ -18,11 +18,11 @@ final class Defense implements SpellInterface
 {
     public function affect(CharacterInterface $caster, CharacterInterface $target): void
     {
-        if ($target !== $caster) {
+        if (!$this->canCast($caster, $target)) {
             return;
         }
 
-        $target->effect(new Protection(1));
+        $target->effect(new Protection(2));
     }
 
     public function manacost(): int
@@ -32,6 +32,11 @@ final class Defense implements SpellInterface
 
     public function name(): string
     {
-        return 'Defend';
+        return 'defend';
+    }
+
+    public function canCast(CharacterInterface $caster, CharacterInterface $target): bool
+    {
+        return $caster === $target;
     }
 }

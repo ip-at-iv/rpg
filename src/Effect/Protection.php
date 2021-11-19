@@ -24,13 +24,14 @@ final class Protection implements EffectInterface
 
     public function notify(CharacterInterface $target): void
     {
-        // spell wears off
+        // buff wears off
         if ($this->turns == 0) {
-            $target->defense /= 2;
+            $target->defenseModifier -= 0.5;
+            $target->effects()->remove($this);
         }
         
         if (!$this->applied) {
-            $target->defense *= 2;
+            $target->defenseModifier += 0.5;
             $this->applied = true;
         }
 

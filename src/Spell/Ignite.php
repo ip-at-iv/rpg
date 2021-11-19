@@ -4,28 +4,29 @@
 namespace Demyanseleznev\Rpg\Spell;
 
 use Demyanseleznev\Rpg\CharacterInterface;
+use Demyanseleznev\Rpg\Effect\Ignition;
 use Demyanseleznev\Rpg\SpellInterface;
 
-final class Bash implements SpellInterface
+final class Ignite implements SpellInterface
 {
     public function affect(CharacterInterface $caster, CharacterInterface $target): void
     {
         if (!$this->canCast($caster, $target)) {
-            return;
+            return; // exception maybe?
         }
 
         $damage = $caster->power() * 1.5; // formula
-        $target->takeDamage($damage);
-    }
-
-    public function manacost(): int
-    {
-        return 50; // todo: formula
+        $target->effect(new Ignition(2, $damage));
     }
 
     public function name(): string
     {
-        return 'bash';
+        return 'ignite';
+    }
+
+    public function manacost(): int
+    {
+        return 30;
     }
 
     public function canCast(CharacterInterface $caster, CharacterInterface $target): bool

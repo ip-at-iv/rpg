@@ -4,36 +4,96 @@
 namespace Demyanseleznev\Rpg\Character;
 
 use Demyanseleznev\Rpg\CharacterInterface;
+use Demyanseleznev\Rpg\Effect\Collection as EffectCollection;
 use Demyanseleznev\Rpg\EffectInterface;
 use Demyanseleznev\Rpg\Spell\Collection as SpellCollection;
 
 final class Mage implements CharacterInterface
 {
-    public function update(): void {
-        // TODO: Implement update() method.
+    private string $name;
+    private int    $strength;
+    private int    $dexterity;
+    private int    $intelligence;
+
+    public float $currentHealth;
+    public float $currentMana;
+    public float $defenseModifier = 1.0;
+    public float $powerModifier = 1.0;
+    public float $healthRegenModifier = 1.0;
+    public float $manaRegenModifier = 1.0;
+
+    private SpellCollection  $spells;
+    private EffectCollection $effects;
+
+    public function __construct(
+            string $name,
+            int    $strength,
+            int    $dexterity,
+            int    $intelligence
+    ) {
+        $this->name = $name;
+        $this->strength = $strength;
+        $this->dexterity = $dexterity;
+        $this->intelligence = $intelligence;
+
+        $this->spells = new SpellCollection([]);
+        $this->effects = new EffectCollection();
     }
-    public function mana(): int {
-        // TODO: Implement mana() method.
+
+    public function update(): void
+    {
+        foreach ($this->effects as $effect) {
+            $effect->notify($this);
+        }
     }
-    public function health(): int {
-        // TODO: Implement health() method.
+
+    public function health(): float
+    {
+        return CharacterInterface::BASE_HEALTH + ($this->strength * CharacterInterface::STRENGTH_MODIFIER);
     }
-    public function defense(): int {
-        // TODO: Implement defense() method.
+
+    public function defense(): float
+    {
+        return CharacterInterface::BASE_DEFENSE + ($this->dexterity * CharacterInterface::DEXTERITY_MODIFIER);
     }
-    public function power(): int {
-        // TODO: Implement power() method.
+
+    public function mana(): float
+    {
+        return CharacterInterface::BASE_MANA + ($this->intelligence * CharacterInterface::INTELLIGENCE_MODIFIER);
     }
-    public function effect(EffectInterface $effect): void {
-        // TODO: Implement effect() method.
+
+    public function power(): float
+    {
+        return CharacterInterface::BASE_POWER + $this->intelligence;
     }
-    public function takeDamage(int $damage): void {
+
+    public function effect(EffectInterface $effect): void
+    {
+        $this->effects->push($effect);
+    }
+
+    public function takeDamage(float $damage): void
+    {
         // TODO: Implement takeDamage() method.
     }
-    public function spells(): SpellCollection {
-        // TODO: Implement spells() method.
+
+    public function spells(): SpellCollection
+    {
+        return $this->spells;
     }
-    public function name(): string {
-        // TODO: Implement name() method.
+
+    public function name(): string
+    {
+        return $this->name;
+    }
+
+    public function isAlive(): bool
+    {
+        return $this->currentHealth > 0;
+    }
+
+    public function effects(): EffectCollection
+    {
+        return $this->effects;
     }
 }

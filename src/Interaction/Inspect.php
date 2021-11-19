@@ -23,9 +23,9 @@ final class Inspect implements InteractionInterface
     {
         $stats = array(
                 sprintf('Name: %s', $this->target->name()),
-                sprintf('Health: %s', $this->target->health()),
+                sprintf('Health: [%s/%s]', $this->target->currentHealth, $this->target->health()),
                 sprintf('Defense: %s', $this->target->defense()),
-                sprintf('Mana: %s', $this->target->mana()),
+                sprintf('Mana: [%s/%s]', $this->target->currentMana, $this->target->mana()),
                 sprintf('Power: %s', $this->target->power()),
         );
 

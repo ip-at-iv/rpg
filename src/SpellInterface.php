@@ -10,4 +10,6 @@ interface SpellInterface
     public function name(): string;
 
     public function manacost(): int;
+
+    public function canCast(CharacterInterface $caster, CharacterInterface $target): bool;
 }
