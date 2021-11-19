@@ -6,7 +6,10 @@ namespace Demyanseleznev\Rpg\Character;
 use Demyanseleznev\Rpg\CharacterInterface;
 use Demyanseleznev\Rpg\Effect\Collection as EffectCollection;
 use Demyanseleznev\Rpg\EffectInterface;
+use Demyanseleznev\Rpg\Spell\Attack;
 use Demyanseleznev\Rpg\Spell\Collection as SpellCollection;
+use Demyanseleznev\Rpg\Spell\Defense;
+use Demyanseleznev\Rpg\Spell\Ignite;
 
 final class Mage implements CharacterInterface
 {
@@ -36,7 +39,7 @@ final class Mage implements CharacterInterface
         $this->dexterity = $dexterity;
         $this->intelligence = $intelligence;
 
-        $this->spells = new SpellCollection([]);
+        $this->spells = new SpellCollection([new Attack(), new Defense(), new Ignite()]);
         $this->effects = new EffectCollection();
     }
 
@@ -96,4 +99,16 @@ final class Mage implements CharacterInterface
     {
         return $this->effects;
     }
+
+    public function healthRegen(): float
+    {
+        // TODO: Implement healthRegen() method.
+    }
+
+    public function manaRegen(): float
+    {
+        // TODO: Implement manaRegen() method.
+    }
+
+
 }
