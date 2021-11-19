@@ -31,6 +31,6 @@ final class Bash implements SpellInterface
 
     public function canCast(CharacterInterface $caster, CharacterInterface $target): bool
     {
-        return $caster !== $target;
+        return $caster->currentMana >= $this->manacost() && $caster !== $target;
     }
 }
