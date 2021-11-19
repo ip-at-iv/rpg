@@ -32,6 +32,10 @@ interface CharacterInterface extends TargetInterface
 
     public function power(): float;
 
+    public function healthRegen(): float;
+
+    public function manaRegen(): float;
+
     public function effect(EffectInterface $effect): void;
 
     public function takeDamage(float $damage): void;

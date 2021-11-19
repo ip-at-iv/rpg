@@ -53,6 +53,40 @@ final class TurnArbiter
             }
             $this->turns += 1;
 
+            foreach ($this->playerPool as $player) {
+                $character = $player->character();
+
+                $maxHealth = $character->health();
+                if ($character->currentHealth < $maxHealth) {
+                    $character->currentHealth += $character->healthRegen();
+                }
+                $character->currentHealth = $character->currentHealth > $maxHealth ? $maxHealth : $character->currentHealth;
+                $this->ui->sayTo(
+                        $player,
+                        sprintf(
+                                'Regenerates %s health and now has [%s/%s] health',
+                                $character->healthRegen(),
+                                $character->currentHealth,
+                                $maxHealth
+                        )
+                );
+
+                $maxMana = $character->mana();
+                if ($character->currentMana < $maxMana) {
+                    $character->currentMana += $character->manaRegen();
+                }
+
+                $character->currentMana = $character->currentMana > $maxMana ? $maxMana : $character->currentMana;
+                $this->ui->sayTo(
+                        $player,
+                        sprintf(
+                                'Regenerates %s mana and now has [%s/%s] mana',
+                                $character->manaRegen(),
+                                $character->currentMana,
+                                $maxMana
+                        )
+                );
+            }
         } while (count($this->playerPool) > 1);
 
         $this->playerPool->rewind();

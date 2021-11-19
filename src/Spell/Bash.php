@@ -16,11 +16,12 @@ final class Bash implements SpellInterface
 
         $damage = $caster->power() * 1.5; // formula
         $target->takeDamage($damage);
+        $caster->currentMana -= $this->manacost();
     }
 
     public function manacost(): int
     {
-        return 50; // todo: formula
+        return 10; // todo: formula
     }
 
     public function name(): string
