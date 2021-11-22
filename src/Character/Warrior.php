@@ -16,9 +16,9 @@ use Demyanseleznev\Rpg\Spell\HealLesserWounds;
 final class Warrior implements CharacterInterface
 {
     private string $name;
-    private int    $strength;
-    private int    $dexterity;
-    private int    $intelligence;
+    private int $strength;
+    private int $dexterity;
+    private int $intelligence;
 
     public float $currentHealth;
     public float $currentMana;
@@ -27,14 +27,14 @@ final class Warrior implements CharacterInterface
     public float $healthRegenModifier = 1.0;
     public float $manaRegenModifier = 1.0;
 
-    private SpellCollection  $spells;
+    private SpellCollection $spells;
     private EffectCollection $effects;
 
     public function __construct(
-            string $name,
-            int $strength,
-            int $dexterity,
-            int $intelligence
+        string $name,
+        int $strength,
+        int $dexterity,
+        int $intelligence
     ) {
         $this->name = $name;
         $this->strength = $strength;

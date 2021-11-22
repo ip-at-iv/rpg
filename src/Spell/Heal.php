@@ -3,11 +3,12 @@
 namespace Demyanseleznev\Rpg\Spell;
 
 use Demyanseleznev\Rpg\CharacterInterface;
+use Demyanseleznev\Rpg\SpellInterface;
 
-class Heal implements \Demyanseleznev\Rpg\SpellInterface {
+class Heal implements SpellInterface {
 
     private float $power;
-    public function __construct(float $intelligence, float $manaRegenModifier) {
+    public function __construct(float $intelligence) {
         $this->power = ($intelligence * $intelligence)*3;
     }
 

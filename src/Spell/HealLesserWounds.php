@@ -2,11 +2,11 @@
 
 namespace Demyanseleznev\Rpg\Spell;
 
-use Demyanseleznev\Rpg\Character\Mage;
 use Demyanseleznev\Rpg\Character\Warrior;
 use Demyanseleznev\Rpg\CharacterInterface;
+use Demyanseleznev\Rpg\SpellInterface;
 
-class HealLesserWounds implements \Demyanseleznev\Rpg\SpellInterface {
+class HealLesserWounds implements SpellInterface {
 
     public function affect(CharacterInterface $caster, CharacterInterface $target): void {
         if(!is_a($caster, Warrior::class) & $caster->isAlive()){
