@@ -37,4 +37,14 @@ final class Ignition implements EffectInterface
             $target->effects()->remove($this);
         }
     }
+
+    public function turnsLeft(): int
+    {
+        return $this->turns;
+    }
+
+    public function name(): string
+    {
+        return 'Ignition';
+    }
 }

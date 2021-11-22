@@ -39,4 +39,9 @@ final class Defense implements SpellInterface
     {
         return $caster === $target;
     }
+
+    public function describe(): string
+    {
+        return 'Basic defense mechanism. Applies [Protection] buff for two turns. Usage does not consume mana.';
+    }
 }

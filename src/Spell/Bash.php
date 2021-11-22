@@ -33,4 +33,9 @@ final class Bash implements SpellInterface
     {
         return $caster->currentMana >= $this->manacost() && $caster !== $target;
     }
+
+    public function describe(): string
+    {
+        return 'Mighty bash. Deals damage equal to your power multiplied by 1.5 (%s).';
+    }
 }

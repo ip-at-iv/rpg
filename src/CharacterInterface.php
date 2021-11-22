@@ -26,9 +26,9 @@ interface CharacterInterface extends TargetInterface
 
     public function mana(): float;
 
-    public function health(): float;
+    public function health(): DepletableParameterInterface;
 
-    public function defense(): float;
+    public function defense(): DepletableParameterInterface;
 
     public function power(): float;
 

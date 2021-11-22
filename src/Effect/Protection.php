@@ -37,4 +37,14 @@ final class Protection implements EffectInterface
 
         $this->turns -= 1;
     }
+
+    public function turnsLeft(): int
+    {
+        return $this->turns;
+    }
+
+    public function name(): string
+    {
+        return 'Protection';
+    }
 }

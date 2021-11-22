@@ -9,6 +9,7 @@ use Demyanseleznev\Rpg\CollectionInterface;
 use Demyanseleznev\Rpg\EffectInterface;
 use Exception;
 use function array_filter;
+use function array_map;
 use function array_search;
 use function count;
 use function current;
@@ -39,6 +40,11 @@ final class Collection implements CollectionInterface
         $index = array_search($effect, $this->effects, true);
         unset($this->effects[$index]);
         return $this;
+    }
+
+    public function map(callable $mapper): array
+    {
+        return array_map($mapper, $this->effects);
     }
 
     public function current(): EffectInterface

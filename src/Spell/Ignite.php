@@ -34,4 +34,9 @@ final class Ignite implements SpellInterface
     {
         return $caster !== $target;
     }
+
+    public function describe(): string
+    {
+        return 'Ignites target, applying [Ignition] debuff on it for 2 turns. Starts dealing damage since next turn.';
+    }
 }

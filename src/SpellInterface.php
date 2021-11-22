@@ -3,7 +3,9 @@
 
 namespace Demyanseleznev\Rpg;
 
-interface SpellInterface
+use Demyanseleznev\Rpg\Contract\Describable;
+
+interface SpellInterface extends Describable
 {
     public function affect(CharacterInterface $caster, CharacterInterface $target): void;
 

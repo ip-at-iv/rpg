@@ -38,4 +38,9 @@ final class Attack implements SpellInterface
     {
         return $caster !== $target;
     }
+
+    public function describe(): string
+    {
+        return 'Basic attack. Deals damage equal to your power (%s). Usage does not consume mana.';
+    }
 }
