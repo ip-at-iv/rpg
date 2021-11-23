@@ -8,19 +8,16 @@ use Demyanseleznev\Rpg\EffectInterface;
 use Demyanseleznev\Rpg\InteractionInterface;
 use Demyanseleznev\Rpg\UI;
 
-final class Inspect implements InteractionInterface
-{
+final class Inspect implements InteractionInterface {
     private CharacterInterface $target;
     private UI                 $ui;
 
-    public function __construct(UI $ui, CharacterInterface $target)
-    {
+    public function __construct(UI $ui, CharacterInterface $target) {
         $this->ui = $ui;
         $this->target = $target;
     }
 
-    public function act(): void
-    {
+    public function act(): void {
         $stats = array(
                 sprintf('Name: %s', $this->target->name()),
                 sprintf('Health: [%s/%s]', $this->target->currentHealth, $this->target->health()),
@@ -40,8 +37,7 @@ final class Inspect implements InteractionInterface
         }
     }
 
-    public function consumesTurn(): bool
-    {
+    public function consumesTurn(): bool {
         return false;
     }
 }

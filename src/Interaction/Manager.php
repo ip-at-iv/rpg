@@ -10,26 +10,23 @@ use Demyanseleznev\Rpg\Randomizer;
 use Demyanseleznev\Rpg\SpellInterface;
 use Demyanseleznev\Rpg\UI;
 
-final class Manager
-{
+final class Manager {
     private UI    $ui;
     private array $interactions;
 
-    public function __construct(UI $ui)
-    {
+    public function __construct(UI $ui) {
         $this->ui = $ui;
     }
 
-    public function setInteractions(array $interactions): void
-    {
+    public function setInteractions(array $interactions): void {
         $this->interactions = $interactions;
     }
 
-    public function create(PlayerInterface $player): InteractionInterface
-    {
+    public function create(PlayerInterface $player): InteractionInterface {
         if ($player instanceof Computer) {
             $character = $player->character();
-            $spells = $character->spells()->filter(fn (SpellInterface $spell) => $spell->manacost() <= $character->mana());
+            $spells =
+                    $character->spells()->filter(fn(SpellInterface $spell) => $spell->manacost() <= $character->mana());
 
             /** @var SpellInterface $spell */
             $spell = Randomizer::fromCollection($spells);
