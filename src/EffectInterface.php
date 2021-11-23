@@ -3,7 +3,6 @@
 
 namespace Demyanseleznev\Rpg;
 
-interface EffectInterface
-{
+interface EffectInterface {
     public function notify(CharacterInterface $target): void;
 }

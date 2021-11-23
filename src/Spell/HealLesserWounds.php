@@ -9,11 +9,11 @@ use Demyanseleznev\Rpg\SpellInterface;
 class HealLesserWounds implements SpellInterface {
 
     public function affect(CharacterInterface $caster, CharacterInterface $target): void {
-        if(!is_a($caster, Warrior::class) & $caster->isAlive()){
+        if (!is_a($caster, Warrior::class) & $caster->isAlive()) {
             return;
         }
-        $power = $caster->powerModifier * .5;
-        $caster->currentHealth = $caster->currentHealth + $power;
+        $power = $caster->power() * .5;
+        $caster->currentHealth += +$power;
     }
     public function name(): string {
         return 'HealLesserWounds';

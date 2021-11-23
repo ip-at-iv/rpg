@@ -7,39 +7,32 @@ use Demyanseleznev\Rpg\CharacterInterface;
 use Demyanseleznev\Rpg\Player\Collection as PlayerCollection;
 use Demyanseleznev\Rpg\PlayerInterface;
 
-final class Player implements PlayerInterface
-{
+final class Player implements PlayerInterface {
     private string             $name;
     private CharacterInterface $character;
     private PlayerCollection   $targets;
 
-    public function __construct(string $name)
-    {
+    public function __construct(string $name) {
         $this->name = $name;
     }
 
-    public function setCharacter(CharacterInterface $character): void
-    {
+    public function setCharacter(CharacterInterface $character): void {
         $this->character = $character;
     }
 
-    public function setTargetList(PlayerCollection $targets): void
-    {
+    public function setTargetList(PlayerCollection $targets): void {
         $this->targets = $targets;
     }
 
-    public function character(): CharacterInterface
-    {
+    public function character(): CharacterInterface {
         return $this->character;
     }
 
-    public function name(): string
-    {
+    public function name(): string {
         return $this->name;
     }
 
-    public function targetList(): PlayerCollection
-    {
+    public function targetList(): PlayerCollection {
         return $this->targets;
     }
 }

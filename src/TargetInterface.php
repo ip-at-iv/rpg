@@ -6,6 +6,5 @@ namespace Demyanseleznev\Rpg;
 /**
  * Probably not needed. Consider removing.
  */
-interface TargetInterface
-{
+interface TargetInterface {
 }

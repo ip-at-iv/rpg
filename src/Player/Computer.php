@@ -7,33 +7,27 @@ use Demyanseleznev\Rpg\CharacterInterface;
 use Demyanseleznev\Rpg\Player\Collection as PlayerCollection;
 use Demyanseleznev\Rpg\PlayerInterface;
 
-final class Computer implements PlayerInterface
-{
+final class Computer implements PlayerInterface {
     private CharacterInterface $character;
     private PlayerCollection   $targets;
 
-    public function __construct(CharacterInterface $character)
-    {
+    public function __construct(CharacterInterface $character) {
         $this->character = $character;
     }
 
-    public function character(): CharacterInterface
-    {
+    public function character(): CharacterInterface {
         return $this->character;
     }
 
-    public function name(): string
-    {
+    public function name(): string {
         return 'CPU';
     }
 
-    public function targetList(): PlayerCollection
-    {
+    public function targetList(): PlayerCollection {
         return $this->targets;
     }
 
-    public function setTargetList(PlayerCollection $targets): void
-    {
+    public function setTargetList(PlayerCollection $targets): void {
         $this->targets = $targets;
     }
 }

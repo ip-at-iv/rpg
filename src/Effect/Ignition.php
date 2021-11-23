@@ -10,21 +10,18 @@ use Demyanseleznev\Rpg\EffectInterface;
  * Applies damage on every turn.
  * Does not proc on first turn.
  */
-final class Ignition implements EffectInterface
-{
+final class Ignition implements EffectInterface {
     private float $damage;
-    private bool $applied;
-    private int $turns;
+    private bool  $applied;
+    private int   $turns;
 
-    public function __construct(int $turns, float $damage)
-    {
+    public function __construct(int $turns, float $damage) {
         $this->applied = false;
         $this->damage = $damage;
         $this->turns = $turns;
     }
 
-    public function notify(CharacterInterface $target): void
-    {
+    public function notify(CharacterInterface $target): void {
         if (!$this->applied) {
             $this->applied = true;
         } else {

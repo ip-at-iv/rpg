@@ -3,8 +3,7 @@
 
 namespace Demyanseleznev\Rpg;
 
-interface InteractionInterface
-{
+interface InteractionInterface {
     public function act(): void;
 
     public function consumesTurn(): bool;

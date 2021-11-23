@@ -3,8 +3,7 @@
 
 namespace Demyanseleznev\Rpg;
 
-interface SpellInterface
-{
+interface SpellInterface {
     public function affect(CharacterInterface $caster, CharacterInterface $target): void;
 
     public function name(): string;

@@ -6,17 +6,16 @@ namespace Demyanseleznev\Rpg;
 use Demyanseleznev\Rpg\Effect\Collection as EffectCollection;
 use Demyanseleznev\Rpg\Spell\Collection as SpellCollection;
 
-interface CharacterInterface extends TargetInterface
-{
-    public const BASE_HEALTH = 100;
-    public const BASE_DEFENSE = 10;
-    public const BASE_MANA = 50;
-    public const BASE_POWER = 30;
+interface CharacterInterface extends TargetInterface {
+    public const BASE_HEALTH       = 100;
+    public const BASE_DEFENSE      = 10;
+    public const BASE_MANA         = 50;
+    public const BASE_POWER        = 30;
     public const BASE_HEALTH_REGEN = 2;
-    public const BASE_MANA_REGEN = 1.5;
+    public const BASE_MANA_REGEN   = 1.5;
 
-    public const STRENGTH_MODIFIER = 2.5;
-    public const DEXTERITY_MODIFIER = 1.5;
+    public const STRENGTH_MODIFIER     = 2.5;
+    public const DEXTERITY_MODIFIER    = 1.5;
     public const INTELLIGENCE_MODIFIER = 2;
 
     /**

@@ -6,35 +6,30 @@ namespace Demyanseleznev\Rpg;
 use Demyanseleznev\Rpg\Interaction\Manager as InteractionManager;
 use Demyanseleznev\Rpg\Player\Collection as PlayerCollection;
 
-final class TurnArbiter
-{
-    private int   $turns;
-    private PlayerCollection $playerPool;
+final class TurnArbiter {
+    private int                $turns;
+    private PlayerCollection   $playerPool;
     private UI                 $ui;
     private InteractionManager $interactionManager;
 
-    public function __construct(UI $ui, InteractionManager $interactionManager)
-    {
+    public function __construct(UI $ui, InteractionManager $interactionManager) {
         $this->interactionManager = $interactionManager;
         $this->playerPool = new PlayerCollection();
         $this->turns = 0;
         $this->ui = $ui;
     }
 
-    public function add(PlayerInterface $player): void
-    {
+    public function add(PlayerInterface $player): void {
         $this->playerPool[] = $player;
     }
 
-    private function prepare(): void
-    {
+    private function prepare(): void {
         foreach ($this->playerPool as $player) {
             $player->setTargetList($this->playerPool);
         }
     }
 
-    public function run(): void
-    {
+    public function run(): void {
         $this->prepare();
         $this->ui->say('Let the game begin!');
 
@@ -60,7 +55,8 @@ final class TurnArbiter
                 if ($character->currentHealth < $maxHealth) {
                     $character->currentHealth += $character->healthRegen();
                 }
-                $character->currentHealth = $character->currentHealth > $maxHealth ? $maxHealth : $character->currentHealth;
+                $character->currentHealth =
+                        $character->currentHealth > $maxHealth ? $maxHealth : $character->currentHealth;
                 $this->ui->sayTo(
                         $player,
                         sprintf(
@@ -95,8 +91,7 @@ final class TurnArbiter
         $this->ui->say(sprintf('Total turns taken: %s', $this->turns()));
     }
 
-    public function turns(): int
-    {
+    public function turns(): int {
         return $this->turns;
     }
 }

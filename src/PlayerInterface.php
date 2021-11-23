@@ -5,8 +5,7 @@ namespace Demyanseleznev\Rpg;
 
 use Demyanseleznev\Rpg\Player\Collection as PlayerCollection;
 
-interface PlayerInterface
-{
+interface PlayerInterface {
     public function character(): CharacterInterface;
 
     public function setTargetList(PlayerCollection $targets): void;

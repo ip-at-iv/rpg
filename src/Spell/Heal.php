@@ -9,16 +9,16 @@ class Heal implements SpellInterface {
 
     private float $power;
     public function __construct(float $intelligence) {
-        $this->power = ($intelligence * $intelligence)*3;
+        $this->power = ($intelligence * $intelligence) * 3;
     }
 
     public function affect(CharacterInterface $caster, CharacterInterface $target): void {
-        if($caster->currentHealth>=$caster->health()){
+        if ($caster->currentHealth >= $caster->health()) {
             return;
         }
         $errorRate = $caster->health() / $this->power;
         $healWithError = ($errorRate) > 2 ? 1 : ($errorRate - 1) * $this->power;
-        $caster->currentHealth = $caster->currentHealth + $healWithError;
+        $caster->currentHealth += $healWithError;
     }
     public function name(): string {
         return 'Heal';

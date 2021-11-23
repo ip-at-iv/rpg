@@ -3,7 +3,6 @@
 
 namespace Demyanseleznev\Rpg;
 
-interface InteractionFactoryInterface
-{
+interface InteractionFactoryInterface {
     public function create(PlayerInterface $actor): InteractionInterface;
 }

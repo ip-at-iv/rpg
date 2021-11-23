@@ -13,10 +13,8 @@ use Demyanseleznev\Rpg\SpellInterface;
  * Does not require mana.
  * Does not modify character state.
  */
-final class Attack implements SpellInterface
-{
-    public function affect(CharacterInterface $caster, CharacterInterface $target): void
-    {
+final class Attack implements SpellInterface {
+    public function affect(CharacterInterface $caster, CharacterInterface $target): void {
         if (!$this->canCast($caster, $target)) {
             return;
         }
@@ -24,18 +22,15 @@ final class Attack implements SpellInterface
         $target->takeDamage($caster->power());
     }
 
-    public function manacost(): int
-    {
+    public function manacost(): int {
         return 0;
     }
 
-    public function name(): string
-    {
+    public function name(): string {
         return 'attack';
     }
 
-    public function canCast(CharacterInterface $caster, CharacterInterface $target): bool
-    {
+    public function canCast(CharacterInterface $caster, CharacterInterface $target): bool {
         return $caster !== $target;
     }
 }

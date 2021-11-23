@@ -14,10 +14,8 @@ use Demyanseleznev\Rpg\SpellInterface;
  * Does not cost mana.
  * Modifies character state by multiplying defense.
  */
-final class Defense implements SpellInterface
-{
-    public function affect(CharacterInterface $caster, CharacterInterface $target): void
-    {
+final class Defense implements SpellInterface {
+    public function affect(CharacterInterface $caster, CharacterInterface $target): void {
         if (!$this->canCast($caster, $target)) {
             return;
         }
@@ -25,18 +23,15 @@ final class Defense implements SpellInterface
         $target->effect(new Protection(2));
     }
 
-    public function manacost(): int
-    {
+    public function manacost(): int {
         return 0;
     }
 
-    public function name(): string
-    {
+    public function name(): string {
         return 'defend';
     }
 
-    public function canCast(CharacterInterface $caster, CharacterInterface $target): bool
-    {
+    public function canCast(CharacterInterface $caster, CharacterInterface $target): bool {
         return $caster === $target;
     }
 }
