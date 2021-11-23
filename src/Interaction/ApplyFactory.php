@@ -22,13 +22,16 @@ final class ApplyFactory implements InteractionFactoryInterface
     public function create(PlayerInterface $actor): InteractionInterface
     {
         //region Spell selection
-        $spells = $actor->character()->spells()->map(fn (SpellInterface $spell) => $spell->name());
+        $character = $actor->character();
+        $collection = $character->spells()->filter(fn (SpellInterface $spell) => $spell->manacost() <= $character->currentMana);
+
+        $spells = $collection->map(fn (SpellInterface $spell) => $spell->name());
 
         $choice = $this->ui->ask($actor, sprintf('Choose a spell [%s]: ', implode(', ', $spells)));
         if (!in_array($choice, $spells)) {
             throw new Exception(sprintf('Unknown spell: %s', $choice));
         }
-        $spell = $actor->character()->spells()->find(fn (SpellInterface $spell) => $spell->name() == $choice);
+        $spell = $collection->find(fn (SpellInterface $spell) => $spell->name() == $choice);
         //endregion
 
         //region Target selection
@@ -40,6 +43,6 @@ final class ApplyFactory implements InteractionFactoryInterface
         $target = $actor->targetList()->find(fn (PlayerInterface $player) => $player->character()->name() == $choice);
         //endregion
 
-        return new Apply($spell, $actor->character(), $target->character());
+        return new Apply($spell, $character, $target->character());
     }
 }

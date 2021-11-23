@@ -17,6 +17,7 @@ final class Ignite implements SpellInterface
 
         $damage = $caster->power() * 1.5; // formula
         $target->effect(new Ignition(2, $damage));
+        $target->currentMana -= $this->manacost();
     }
 
     public function name(): string
